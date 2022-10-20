@@ -1,0 +1,32 @@
+.header-category{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+
+    position: absolute;
+    width: 234px;
+    height: 56px;
+    left: 101px;
+    bottom: 0px;
+}
+.category{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 56px;
+    font-size: 16px;
+    line-height: 120%;
+    text-align: center;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    padding: 0 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.category.active{
+    color: #5ECE7B;
+    border-bottom: 2px solid #5ECE7B;
+}

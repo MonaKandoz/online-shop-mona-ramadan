@@ -1,0 +1,51 @@
+nav.header{
+    position: relative;
+    width: 100vw;
+    height: 80px;
+    left: 0px;
+    top: 0px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.a-logo{
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    left: 699px;
+    top: calc(50% - 41px/2 + 4.5px);
+}
+.header-action{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+    gap: 12px;
+
+    position: absolute;
+    width: 204px;
+    height: 40px;
+    right: 101px;
+    top: 23px;
+}
+.header-action div{
+    cursor: pointer;
+}
+.header-action .currency-change{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0px 10px;
+    gap: 12px;
+}
+.header-action .currency-change span{
+    width: 12px;
+    font-style: normal;
+    font-size: 18px;
+}
