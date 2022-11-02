@@ -5,6 +5,8 @@ nav.header{
     left: 0px;
     top: 0px;
     
+    font-weight: 500;
+    
     display: flex;
     justify-content: space-between;
     align-content: center;
@@ -48,4 +50,5 @@ nav.header{
     width: 12px;
     font-style: normal;
     font-size: 18px;
+    font-weight: 600;
 }

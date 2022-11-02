@@ -1,0 +1,35 @@
+.button-container {
+    min-width: 140px;
+    height: 43px;
+    width: auto;
+    padding: 16px 0;
+
+    background: #5ECE7B;
+    color: white;
+    border: none;
+    cursor: pointer;
+    
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  
+.button-container:hover {
+    background-color: #3b834d;
+}
+.button-container.view-bag {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+.button-container.view-bag:hover {
+    background-color: black;
+    color: white;
+    border: none;
+}

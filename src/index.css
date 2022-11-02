@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+:root{
+  --c-black: #1D1F22;
+}
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  color: var(--c-black);
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +17,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #ffffff;
+}
+
+body.noscroll{
+  overflow:hidden;
 }
 
 code {

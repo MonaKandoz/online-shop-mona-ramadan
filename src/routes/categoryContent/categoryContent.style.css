@@ -1,0 +1,21 @@
+main{
+    padding: 100px;
+    width: 100vw;
+}
+.category-products{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: calc(100vw - 200px);
+    column-gap: 40px;
+    row-gap: 100px;
+    padding-bottom: 90px;
+}
+
+.category-name{
+    display: inline-block;
+    font-weight: 400;
+    font-size: 42px;
+    color: var(--c-black);
+    text-transform: capitalize;
+    margin-bottom: 80px;
+}
