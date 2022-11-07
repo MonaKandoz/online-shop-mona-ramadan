@@ -15,7 +15,6 @@ export default class Header extends React.Component {
     static contextType = CartContext;
     render(){
     const { isCartOpen } = this.context;
-    console.log(isCartOpen);
         return(
             <React.Fragment>
                 <nav className="header">

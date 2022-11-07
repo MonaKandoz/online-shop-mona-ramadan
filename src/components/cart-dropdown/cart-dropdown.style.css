@@ -16,7 +16,8 @@
 
     position: absolute;
     width: 325px;
-    height: calc(100vh - 100px);
+    min-height: 165px;
+    max-height: calc(100vh - 100px);
     right: 72px;
     top: 0;
 
@@ -28,14 +29,6 @@
 }
 .cart-dropdown-container .cart-header span{
     font-weight: 700;
-}
-
-.cart-dropdown-container .cart-item{
-    height: calc(100% - 100px);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
 }
 
 .cart-dropdown-container .cart-item::-webkit-scrollbar-track{
@@ -62,4 +55,12 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 160%;
+}
+
+.cart-dropdown-container .item-increase svg:nth-child(1) ,
+.cart-dropdown-container .item-decrease svg:nth-child(1){
+    width: 8px;
+}
+.cart-dropdown-container .item-increase svg:nth-child(2){
+    height: 8px;
 }

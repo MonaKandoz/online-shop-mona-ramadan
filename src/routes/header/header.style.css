@@ -7,19 +7,18 @@ nav.header{
     
     font-weight: 500;
     
-    display: flex;
-    justify-content: space-between;
+    display: flex;justify-content: space-between;
     align-content: center;
-    align-items: center;
+    align-items: flex-end;
     flex-direction: row;
+    padding: 0 100px;
 }
 
 .a-logo{
-    position: absolute;
     width: 41px;
     height: 41px;
-    left: 699px;
-    top: calc(50% - 41px/2 + 4.5px);
+    position: relative;
+    bottom: 17px;
 }
 .header-action{
     display: flex;
@@ -29,11 +28,10 @@ nav.header{
     padding: 0px;
     gap: 12px;
 
-    position: absolute;
     width: 204px;
-    height: 40px;
-    right: 101px;
-    top: 23px;
+    max-height: 40px;
+    position: relative;
+    bottom: 27px;
 }
 .header-action div{
     cursor: pointer;

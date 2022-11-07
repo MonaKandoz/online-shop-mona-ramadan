@@ -1,9 +1,9 @@
 import React from "react";
 
 import './productcard.style.css';
-import {ReactComponent as ChartSVG} from '../../images/chart.svg';
 
 import { ProductsContext } from "../../context/products.context";
+import AddToCartBtn from "../add-to-cart-btn/add-to-cart-btn.component";
 
 class ProductCard extends React.Component{
     static contextType = ProductsContext;
@@ -22,7 +22,7 @@ class ProductCard extends React.Component{
                 <div key={`product_${category}_${index}`} className="product">
                     <div className="product-img" style={{backgroundImage:`url(${product.gallery[0]})`}}>
                         {!product.inStock&&<span className='outStock'>out of Stock</span>}
-                        <span className="add-to-chart"><ChartSVG /></span>
+                        <AddToCartBtn isSvgBtn={true} product={product}/>
                     </div>
                     <div className="content">
                         <div className="product-name">{product.name}</div>

@@ -4,11 +4,8 @@
     align-items: flex-start;
     padding: 0px;
 
-    position: absolute;
     width: 234px;
     height: 56px;
-    left: 101px;
-    bottom: 0px;
 }
 .category{
     display: flex;
@@ -18,7 +15,6 @@
     font-size: 16px;
     line-height: 120%;
     text-align: center;
-    text-decoration: none;
 
     flex: none;
     order: 0;

@@ -1,0 +1,29 @@
+.carousel{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel .arrow{
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.73);
+}
+.carousel .arrow svg{
+    fill:#FFFFFF;
+}
+
+.carousel .arrow.left-arrow{
+    right: 48px;
+}
+.carousel .gallery_img{
+    display:none;
+
+}
+
+.carousel .gallery_img.active{
+    display: inline-block;
+}

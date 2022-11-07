@@ -14,11 +14,11 @@ class CartIcon extends React.Component{
         body.classList.toggle("noscroll");       
     }
     render(){
-        
+        const {cartCount } = this.context;
         return(
             <div className="cart-icon" onClick={this.toggleIsCartOpen}>
                 <ChartSVG />
-                <span className='item-count'>3</span>
+                <span className='item-count'>{cartCount}</span>
             </div>
         )
     }
