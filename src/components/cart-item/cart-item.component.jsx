@@ -1,25 +1,24 @@
 import React from "react";
-import { connect } from "react-redux";
 
 import {ReactComponent as VirticalDash} from '../../images/virtical-dash.svg';
 import {ReactComponent as HorizontalDash} from '../../images/horizontal-dash.svg';
 import Carousel from "../carousel/carousel.component";
 
+import { CartContext } from '../../context/cart.context';
 import './cart-item.style.css';
-import { removeItemFromCart,
-    getSelectedAttribute,
-    addItemToCart} from '../../store/cart/cart.action'
 
 class CartItem extends React.Component{
+    static contextType = CartContext;
     handleChange=(itemId, attributeId, selectedValue)=>{
-        const {getSelectedAttribute, cartItems} = this.props;
-        getSelectedAttribute(cartItems, itemId, attributeId, selectedValue)
+        const {getSelectedAttribute} = this.context;
+        getSelectedAttribute(itemId, attributeId, selectedValue)
     }
 
     render(){
-        const { cartItems, cartItem, isDropdown, isCart, addItemToCart, removeItemFromCart} = this.props
+        const { cartItem, isDropdown} = this.props
         const { id, name, quantity, prices, brand, attributes, gallery} = cartItem;
         const productId = id;
+        const {addItemToCart, removeItemFromCart} = this.context;
         return(
             <div className="cart-product">
                 <div className="cart-right">
@@ -38,26 +37,12 @@ class CartItem extends React.Component{
                                             {items.map((item, idx)=>(
                                                 attribute.type === 'swatch'?
                                                     <div>
-                                                        <input 
-                                                            type="radio" 
-                                                            name={`${productId}_${attrId}${isDropdown?'_dropdowen':''}`} 
-                                                            value={item.value} id={`${productId}_${attrId}_${idx}`} 
-                                                            checked={item.selected?'checked':''}  
-                                                            disabled={isCart?true:false}
-                                                            onChange={()=>this.handleChange(productId, attrId, item.value)}
-                                                            /> 
+                                                        <input type="radio" name={`${productId}_${attrId}${isDropdown?'_dropdowen':''}`} value={item.value} id={`${productId}_${attrId}_${idx}`} checked={item.selected?'checked':''} onChange={()=>this.handleChange(productId, attrId, item.value)} /> 
                                                         <label for={`${productId}_${attrId}_${idx}`} className="attr-val-swatch" style={{backgroundColor:`${item.value}`}} />
                                                     </div>
                                                     : 
                                                     <div>
-                                                        <input 
-                                                            type="radio" 
-                                                            name={`${productId}_${attrId}${isDropdown?'_dropdowen':''}`} 
-                                                            value={item.value} id={`${productId}_${attrId}_${idx}`} 
-                                                            checked={item.selected?'checked':''} 
-                                                            disabled={isCart?true:false}
-                                                            onChange={()=>this.handleChange(productId, attrId, item.value)} 
-                                                            />
+                                                        <input type="radio" name={`${productId}_${attrId}${isDropdown?'_dropdowen':''}`} value={item.value} id={`${productId}_${attrId}_${idx}`} checked={item.selected?'checked':''} onChange={()=>this.handleChange(productId, attrId, item.value)} />
                                                         <label for={`${productId}_${attrId}_${idx}`} className="attr-val-text" >{item.value}</label>
                                                     </div>
                                                 
@@ -71,12 +56,12 @@ class CartItem extends React.Component{
                 </div>
                 <div className="cart-left">
                     <div className="item-increase-decrease">
-                        <span className="item-increase" onClick={()=>addItemToCart(cartItems, cartItem)}>
+                        <span className="item-increase" onClick={()=>addItemToCart(cartItem)}>
                             <HorizontalDash />
                             <VirticalDash />
                             </span>
                         <span className="item-quantitiy">{quantity}</span>
-                        <span className="item-decrease" onClick={()=>removeItemFromCart(cartItems, cartItem)}><HorizontalDash /></span>
+                        <span className="item-decrease" onClick={()=>removeItemFromCart(cartItem)}><HorizontalDash /></span>
                     </div>
                     <div className="item-gallary">
                     {isDropdown?
@@ -91,20 +76,4 @@ class CartItem extends React.Component{
     }
 }
 
-
-const mapStateToProps = function(state) {
-    return {
-        isCartOpen: state.cart.isCartOpen,
-        cartItems: state.cart.cartItems, 
-        cartCount: state.cart.cartCount, 
-        cartTotal: state.cart.cartTotal
-    }
-};
-
-const mapDispatchToProps = () => ({ 
-    removeItemFromCart,
-    getSelectedAttribute,
-    addItemToCart
-});
-
-export default connect(mapStateToProps, mapDispatchToProps())(CartItem);
+export default CartItem;

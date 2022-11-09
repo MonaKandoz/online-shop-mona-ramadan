@@ -1,20 +1,20 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import { connect } from "react-redux";
 
 import Category from "../../components/category/category.component";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+import { CartContext } from "../../context/cart.context";
 
 import {ReactComponent as ReactLogo} from '../../images/logo.svg';
 import { IoIosArrowDown } from "react-icons/io";
-import { setIsCartOpen} from '../../store/cart/cart.action'
 
 import './header.style.css';
 
-class Header extends React.Component {
+export default class Header extends React.Component {
+    static contextType = CartContext;
     render(){
-    const { isCartOpen } = this.props;
+    const { isCartOpen } = this.context;
         return(
             <React.Fragment>
                 <nav className="header">
@@ -39,17 +39,3 @@ class Header extends React.Component {
     }
 
 }
-const mapStateToProps = function(state) {
-    return {
-        isCartOpen: state.cart.isCartOpen,
-        cartItems: state.cart.cartItems, 
-        cartCount: state.cart.cartCount, 
-        cartTotal: state.cart.cartTotal
-    }
-};
-
-const mapDispatchToProps = () => ({ 
-    setIsCartOpen
-});
-
-export default connect(mapStateToProps, mapDispatchToProps())(Header);

@@ -1,22 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
 
 import './category.style.css';
+import { ProductsContext } from "../../context/products.context";
 
-import SHOP_DATA from "../../shop_data.json";
-import { setCategories } from '../../store/categories/category.action';
-class Category extends React.Component {
-    constructor(props){
-        super(props);
-        props.setCategories(SHOP_DATA[0].categories);
-    }
+export default class Category extends React.Component {
+    
+    static contextType = ProductsContext;
 
     render(){
-        const categories = this.props.categories;
+        const {products}= this.context;
         return(
             <div className="header-category">
-                {categories.map(categoryItem=>{
+                {products[0].categories.map(categoryItem=>{
                     const name = categoryItem.name;
                     return(
                         <NavLink key={`category_${name}`} to={`/${name}`} className='category' >{name}</NavLink>
@@ -24,16 +20,4 @@ class Category extends React.Component {
             </div>
         )
     }
-};
-
-const mapStateToProps = function(state) {
-    return {
-        categories: state.categories.categories
-    }
-};
-const mapDispatchToProps = () => ({ 
-    setCategories
-});
-
-
-export default connect(mapStateToProps, mapDispatchToProps())(Category)
+}

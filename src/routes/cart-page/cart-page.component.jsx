@@ -1,20 +1,22 @@
 import React from "react";
-import { connect } from 'react-redux';
 
 import CartItem from "../../components/cart-item/cart-item.component";
 import Button from "../../components/button/button.component";
 
+import { CartContext } from '../../context/cart.context';
 import './cart-page.style.css';
 
 class CartPage extends React.Component{
+    static contextType = CartContext;
+    
     render(){
-        const { cartItems, cartCount, cartTotal } = this.props;
+        const { cartItems, cartCount, cartTotal } = this.context;
         return(
             <div className="cart-page-content">
                 <span className="cart-page-header">Cart</span>
                 <div className="cart-item">
                         {cartItems.map((item)=>(
-                            <CartItem key={item.id} cartItem={item}  isCart/>
+                            <CartItem key={item.id} cartItem={item} />
                         ))}
                 </div>
                 <div className="cart-footer">
@@ -28,13 +30,4 @@ class CartPage extends React.Component{
     }
 }
 
-const mapStateToProps = function(state) {
-    return {
-        isCartOpen: state.cart.isCartOpen,
-        cartItems: state.cart.cartItems, 
-        cartCount: state.cart.cartCount, 
-        cartTotal: state.cart.cartTotal
-    }
-};
-
-export default connect(mapStateToProps)(CartPage);
+export default CartPage;

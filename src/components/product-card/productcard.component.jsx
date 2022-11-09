@@ -1,11 +1,12 @@
 import React from "react";
-import { connect } from 'react-redux';
 
 import './productcard.style.css';
 
+import { ProductsContext } from "../../context/products.context";
 import AddToCartBtn from "../add-to-cart-btn/add-to-cart-btn.component";
 
 class ProductCard extends React.Component{
+    static contextType = ProductsContext;
     render(){
         var i = 0;
         const category = this.props.category;
@@ -14,8 +15,8 @@ class ProductCard extends React.Component{
         }else if(category === 'tech'){
             i=2;
         }
-        const {categories} = this.props;
-        let products = categories[i].products;
+        let products = this.context.products[0].categories[i].products;
+        
         return(
             products.map((product,index)=>(
                 <div key={`product_${category}_${index}`} className="product">
@@ -35,11 +36,4 @@ class ProductCard extends React.Component{
     }
 }
 
-const mapStateToProps = function(state) {
-    return {
-        categories: state.categories.categories
-    }
-};
-
-
-export default connect(mapStateToProps)(ProductCard);
+export default ProductCard;
