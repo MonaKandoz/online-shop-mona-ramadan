@@ -1,4 +1,5 @@
 import React from "react";
+import { addProductResolver } from "../../apollo/resolvers/resolvers"; 
 
 import './add-to-cart-btn.style.css';
 
@@ -8,15 +9,16 @@ import Button from "../button/button.component";
 
 class AddToCartBtn extends React.Component{
     static contextType = CartContext; 
-    addProductToCart = (product)=>{
+    addProductToCart = async(productID)=>{
         const {addItemToCart} = this.context;
-        addItemToCart(product)
+        const product = await addProductResolver(productID);
+        addItemToCart(product);
     }
     render(){
-        const {isSvgBtn, product} = this.props;
+        const {isSvgBtn, productID} = this.props;
         return(
-            isSvgBtn? <Button className="add-to-chart" onClick={()=>this.addProductToCart(product)}><ChartSVG /></Button>
-                    : <Button className="add-to-chart notSvg" onClick={()=>this.addProductToCart(product)}>Add to cart</Button>
+            isSvgBtn? <Button className="add-to-chart" onClick={()=>this.addProductToCart(productID)}><ChartSVG /></Button>
+                    : <Button className="add-to-chart notSvg" onClick={()=>this.addProductToCart(productID)}>Add to cart</Button>
            
         )
     }

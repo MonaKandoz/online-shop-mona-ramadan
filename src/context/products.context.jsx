@@ -1,13 +1,40 @@
-import { createContext, useState } from "react";
-import SHOP_DATA from "../shop_data.json";
+import { createContext, useState, useEffect } from "react";
+import { gql, useQuery } from "@apollo/client";
 
 export const ProductsContext = createContext({
-    products: SHOP_DATA
+    productsList: [],
+    categories: [],
+    currencySelected: 0
 });
 
+const CATEGORIES = gql`
+    query{
+        categories{
+          name
+        }
+    }
+`;
 export const ProductsProvider = ({children})=>{
-    const [products, setProducts] = useState(SHOP_DATA);
-    const value = {products};
+    const {loading, data} = useQuery(CATEGORIES);
+    const [categories, setCategories] = useState([]);
+    const [productsList, setProductsList] = useState([]);
+    const [currencySelected, setCurrencySelected] = useState(0)
+
+
+    useEffect(()=>{
+        if(data){
+            const categoriesArray = data.categories;
+            const categoriesList = [];
+
+            for(var i=0; i<categoriesArray.length; i++){
+                const {name} = categoriesArray[i];
+                categoriesList.push(name);
+            }
+            setCategories(categoriesList);
+        }
+    },[data]);
+    
+    const value = {setProductsList, productsList, categories, loading, currencySelected, setCurrencySelected};
     
     return(
         <ProductsContext.Provider value={value}>{children}</ProductsContext.Provider>

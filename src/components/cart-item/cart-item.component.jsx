@@ -15,17 +15,19 @@ class CartItem extends React.Component{
     }
 
     render(){
-        const { cartItem, isDropdown} = this.props
+        const { cartItem, isDropdown, isCart, } = this.props
         const { id, name, quantity, prices, brand, attributes, gallery} = cartItem;
         const productId = id;
-        const {addItemToCart, removeItemFromCart} = this.context;
+        const {addItemToCart, removeItemFromCart, currencySelected} = this.context;
+        console.log(prices)
+        console.log(currencySelected)
         return(
             <div className="cart-product">
                 <div className="cart-right">
                     <div className="item-info">
                         <span className="item-brand">{brand}</span>
                         <span className="item-name">{name}</span>
-                        <span className='item-price' alt={prices[0].currency.label}>{prices[0].currency.symbol}{prices[0].amount}</span>
+                        <span className='item-price' alt={prices[currencySelected].currency.label}>{prices[currencySelected].currency.symbol} {prices[currencySelected].amount}</span>
                         <div className="item-attribute">
                             {attributes.map((attribute, index) =>{
                                 const{id, name, type, items} = attribute;
@@ -36,16 +38,29 @@ class CartItem extends React.Component{
                                         <div className="attribute-inputs">
                                             {items.map((item, idx)=>(
                                                 attribute.type === 'swatch'?
-                                                    <div>
-                                                        <input type="radio" name={`${productId}_${attrId}${isDropdown?'_dropdowen':''}`} value={item.value} id={`${productId}_${attrId}_${idx}`} checked={item.selected?'checked':''} onChange={()=>this.handleChange(productId, attrId, item.value)} /> 
-                                                        <label for={`${productId}_${attrId}_${idx}`} className="attr-val-swatch" style={{backgroundColor:`${item.value}`}} />
-                                                    </div>
-                                                    : 
-                                                    <div>
-                                                        <input type="radio" name={`${productId}_${attrId}${isDropdown?'_dropdowen':''}`} value={item.value} id={`${productId}_${attrId}_${idx}`} checked={item.selected?'checked':''} onChange={()=>this.handleChange(productId, attrId, item.value)} />
-                                                        <label for={`${productId}_${attrId}_${idx}`} className="attr-val-text" >{item.value}</label>
-                                                    </div>
-                                                
+                                                <div>
+                                                <input 
+                                                    type="radio" 
+                                                    name={`${productId}_${attrId}${isDropdown?'_dropdowen':''}`} 
+                                                    value={item.value} id={`${productId}_${attrId}_${idx}`} 
+                                                    checked={item.selected?'checked':''}  
+                                                    disabled={isCart?true:false}
+                                                    onChange={()=>this.handleChange(productId, attrId, item.value)}
+                                                    /> 
+                                                <label for={`${productId}_${attrId}_${idx}`} className="attr-val-swatch" style={{backgroundColor:`${item.value}`}} />
+                                            </div>
+                                            : 
+                                            <div>
+                                                <input 
+                                                    type="radio" 
+                                                    name={`${productId}_${attrId}${isDropdown?'_dropdowen':''}`} 
+                                                    value={item.value} id={`${productId}_${attrId}_${idx}`} 
+                                                    checked={item.selected?'checked':''} 
+                                                    disabled={isCart?true:false}
+                                                    onChange={()=>this.handleChange(productId, attrId, item.value)} 
+                                                    />
+                                                <label for={`${productId}_${attrId}_${idx}`} className="attr-val-text" >{item.value}</label>
+                                            </div>                                                
                                             ))}
                                         </div>
                                     </div>

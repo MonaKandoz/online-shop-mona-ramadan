@@ -75,7 +75,9 @@ export const CartContext = createContext({
     removeItemFromCart: ()=>{},
     getSelectedAttribute: ()=>{},
     cartCount: 0,
-    cartTotal: 0
+    cartTotal: 0,
+    currencySelected: 0,
+    currencySymbol: '$'
 });
 
 export const CartProvidor = ({children})=>{
@@ -83,6 +85,8 @@ export const CartProvidor = ({children})=>{
     const [cartItems, setCartItems] = useState([]);
     const [cartCount, setCartCount ] = useState(0);
     const [cartTotal, setCartTotal] = useState(0);
+    const [currencySelected, setCurrencySelected] = useState(0);
+    const [currencySymbol, setCurrencySymbol] = useState('$');
 
     useEffect(()=>{
         const newCartCount = cartItems.reduce((total, cartItem) => total + cartItem.quantity, 0);
@@ -90,12 +94,15 @@ export const CartProvidor = ({children})=>{
     }, [cartItems]);
 
     useEffect(() => {
-        const newCartTotal = cartItems.reduce(
-          (total, cartItem) => total + cartItem.quantity * cartItem.prices[0].amount,
+        console.log(cartItems);
+        console.log(currencySelected);
+        var newCartTotal = cartItems.reduce(
+          (total, cartItem) => total + cartItem.quantity * cartItem.prices[currencySelected].amount,
           0
         );
+        console.log(newCartTotal);
         setCartTotal(newCartTotal.toFixed(2));
-      }, [cartItems]);
+      }, [cartItems, currencySelected]);
 
     const addItemToCart = (productToAdd)=>{
         setCartItems(addCartItem(cartItems,productToAdd));
@@ -118,6 +125,10 @@ export const CartProvidor = ({children})=>{
         cartItems,
         cartCount,
         cartTotal,
+        currencySelected,
+        setCurrencySelected,
+        currencySymbol, 
+        setCurrencySymbol
         };
 
     return(

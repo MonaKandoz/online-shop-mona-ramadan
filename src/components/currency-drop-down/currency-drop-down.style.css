@@ -1,0 +1,27 @@
+.currency-drop-down{
+    position: absolute;
+    min-width: 114px;
+    right: 78px;
+    top: 65px;
+    z-index: 1;
+
+    background: #FFFFFF;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 160%;
+    padding: 12px 0;
+    filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
+
+    display: flex;
+    flex-direction: column;
+}
+
+.currency-drop-down li{
+    padding: 8px 20px;
+    list-style: none;
+    cursor: pointer;
+}
+
+.currency-drop-down li.selected, .currency-drop-down li:hover{
+    background: #EEEEEE;
+}

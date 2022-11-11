@@ -7,13 +7,19 @@ import { ProductsContext } from "../../context/products.context";
 export default class Category extends React.Component {
     
     static contextType = ProductsContext;
+    componentDidUpdate(){
+        const {setCurrencySelected}= this.context;
+        const currencyIndx =this.props.currencyIndx;
+        setCurrencySelected(currencyIndx);
+        console.log('update');
+    }
 
     render(){
-        const {products}= this.context;
+        const {categories} = this.context;
         return(
             <div className="header-category">
-                {products[0].categories.map(categoryItem=>{
-                    const name = categoryItem.name;
+                {categories.map(categoryItem=>{
+                    const name = categoryItem;
                     return(
                         <NavLink key={`category_${name}`} to={`/${name}`} className='category' >{name}</NavLink>
                 )})}

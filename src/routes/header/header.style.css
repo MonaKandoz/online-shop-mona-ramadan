@@ -29,9 +29,7 @@ nav.header{
     gap: 12px;
 
     width: 204px;
-    max-height: 40px;
-    position: relative;
-    bottom: 27px;
+    height: 100%;
 }
 .header-action div{
     cursor: pointer;

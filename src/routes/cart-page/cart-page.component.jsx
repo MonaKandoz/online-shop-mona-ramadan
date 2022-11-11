@@ -10,19 +10,19 @@ class CartPage extends React.Component{
     static contextType = CartContext;
     
     render(){
-        const { cartItems, cartCount, cartTotal } = this.context;
+        const { cartItems, cartCount, cartTotal, currencySymbol } = this.context;
         return(
             <div className="cart-page-content">
                 <span className="cart-page-header">Cart</span>
                 <div className="cart-item">
                         {cartItems.map((item)=>(
-                            <CartItem key={item.id} cartItem={item} />
+                            <CartItem key={item.id} cartItem={item} isCart />
                         ))}
                 </div>
                 <div className="cart-footer">
-                    <div className="tax">Taxt 21%:</div> <span>${((cartTotal / 100) * 21).toFixed(2)}</span>
+                    <div className="tax">Taxt 21%:</div> <span>{currencySymbol} {((cartTotal / 100) * 21).toFixed(2)}</span>
                     <div className="tax">Quantity:</div> <span>{cartCount} </span>
-                    <div className="tax">Total: </div> <span>${cartTotal}</span>
+                    <div className="tax">Total: </div> <span>{currencySymbol} {cartTotal}</span>
                     <Button buttonType="checkOut" >Order</Button>
                 </div>
             </div>
