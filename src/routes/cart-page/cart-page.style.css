@@ -18,7 +18,7 @@
     column-gap:24px;
     width: 100%;
     max-width: 244px;
-    max-height: 288px;
+    max-height: 288px !important;
 }
 .cart-page-content .cart-item{
     overflow: visible;

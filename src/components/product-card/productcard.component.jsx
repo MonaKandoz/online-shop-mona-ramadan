@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import './productcard.style.css';
 
@@ -13,16 +14,19 @@ class ProductCard extends React.Component{
         let {id ,gallery ,inStock , name, prices} = product;
 
         return(
-            <div key={`product_${id}`} className="product">
-                <div className="product-img" style={{backgroundImage:`url(${gallery[0]})`}}>
-                    {!inStock&&<span className='outStock'>out of Stock</span>}
-                    <AddToCartBtn isSvgBtn={true} productID={id}/>
+            
+                <div key={`product_${id}`} className="product">
+                    <div className="product-img" style={{backgroundImage:`url(${gallery[0]})`}}>
+                        {!inStock&&<span className='outStock'>out of Stock</span>}
+                        <AddToCartBtn isSvgBtn={true} productID={id}/>
+                    </div>
+                    <Link to={id}>
+                        <div className="content">
+                            <div className="product-name">{name}</div>
+                            <span className="product-price">{prices[currencySelected].currency.symbol}{prices[currencySelected].amount}</span>
+                        </div>
+                    </Link>
                 </div>
-                <div className="content">
-                    <div className="product-name">{name}</div>
-                    <span className="product-price">{prices[currencySelected].currency.symbol}{prices[currencySelected].amount}</span>
-                </div>
-            </div>
         )
     }
 }

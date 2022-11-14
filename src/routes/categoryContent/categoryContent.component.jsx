@@ -29,7 +29,7 @@ export default class CategoryContent extends React.Component{
                     
                     <div className="category-products">
                         {productsList.map((product,index)=>(
-                            <ProductCard product={product}></ProductCard>
+                            <ProductCard key={`${product.id}_${index}`} product={product}></ProductCard>
                             ))
                         }
                         

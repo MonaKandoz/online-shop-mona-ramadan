@@ -11,13 +11,16 @@ class CartPage extends React.Component{
     
     render(){
         const { cartItems, cartCount, cartTotal, currencySymbol } = this.context;
+        console.log(cartItems);
         return(
             <div className="cart-page-content">
                 <span className="cart-page-header">Cart</span>
                 <div className="cart-item">
-                        {cartItems.map((item)=>(
+                        {cartItems.map((item)=>{
+                            console.log(item);
+                            return(
                             <CartItem key={item.id} cartItem={item} isCart />
-                        ))}
+                        )})}
                 </div>
                 <div className="cart-footer">
                     <div className="tax">Taxt 21%:</div> <span>{currencySymbol} {((cartTotal / 100) * 21).toFixed(2)}</span>

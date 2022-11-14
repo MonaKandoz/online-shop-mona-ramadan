@@ -1,0 +1,42 @@
+.thumnail-carousel{
+    display: flex;
+    flex-direction: row;
+    column-gap: 40px;
+}
+
+.Img-thumnail{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 33px;
+
+    max-height: 510px;
+    overflow-y: scroll;
+}
+
+.Img-thumnail::-webkit-scrollbar {
+    display: none;
+  }
+  
+.Img-thumnail {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.thumnail{
+    width:80px;
+    height:80px;
+    background-size: cover;
+}
+
+.preview-side{
+    position: relative;
+    width:610px;
+    height:511px;
+    flex-grow: 4;
+}
+.img-preview{
+    width: 100%;
+    height: 100%;
+    
+    background-size: cover;
+}

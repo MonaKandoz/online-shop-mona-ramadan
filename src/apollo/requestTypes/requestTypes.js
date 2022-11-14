@@ -45,5 +45,6 @@ query ($id: String!){
                 }
             }
             brand
+            description
         }
     }`;

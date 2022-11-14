@@ -1,0 +1,62 @@
+.preview-page{
+    padding: 80px 100px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+
+    display: flex;
+    flex-direction: row;
+    column-gap: 80px;
+}
+
+.preview-page .item-brand, .preview-page .item-name{
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 27px;
+    padding: 0 0 16px 0 !important;
+}
+
+.preview-page .item-name{
+    font-weight: 400;
+}
+
+.preview-page .item-price{
+    font-size: 24px;
+}
+.preview-page .item-info .attribute{
+    padding: 20px 0;
+}
+.preview-page .item-info .attr-val-text{
+    height: 45px;
+    padding: 0 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.preview-page .item-info .attr-val-swatch{
+    width: 32px;
+    height: 32px;
+}
+.preview-page .item-info .attribute span, .price-title{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.price-section{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding-top: 20px;
+}
+
+.preview-page .left-side{
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}
