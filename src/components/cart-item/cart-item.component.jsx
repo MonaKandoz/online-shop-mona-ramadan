@@ -14,9 +14,8 @@ class CartItem extends React.Component{
         const cartItem = this.props.cartItem;
         const { isDropdown } = this.props
         const {id, name, quantity, gallery} = cartItem;
-        const {addItemToCart, removeItemFromCart, currencySelected} = this.context;
-        console.log(cartItem)
-        console.log(currencySelected)
+        const {addItemToCart, removeItemFromCart} = this.context;
+        
         return(
             <div className="cart-product">
                 <div className="cart-right">

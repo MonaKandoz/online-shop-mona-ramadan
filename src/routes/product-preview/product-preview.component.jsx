@@ -34,11 +34,9 @@ class ProductPreview extends React.Component{
     }
     getProductInfo = async(productID)=>{
         let product = await addProductResolver(productID);
-        console.log(product)
         
         var selectedAttr = '';
         const newAttributes = product.attributes.map((attribute, index) =>{
-            console.log(product.attributes.length);
             const newItem = attribute.items.map((item, index) =>{
                 if(index === 0) {
                     selectedAttr+= item.value;
@@ -50,7 +48,6 @@ class ProductPreview extends React.Component{
         });
         product.attributes = newAttributes;
         product.selectedAttr=selectedAttr;
-        console.log(product)
         this.setState({product: product},()=>this.setItem(this.state.product))
     }
     addProductToCart = ()=>{

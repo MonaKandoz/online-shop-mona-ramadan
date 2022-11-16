@@ -31,9 +31,7 @@ nav.header{
     width: 204px;
     height: 100%;
 }
-.header-action div{
-    cursor: pointer;
-}
+
 .header-action .currency-change{
     display: flex;
     flex-direction: row;
@@ -41,6 +39,7 @@ nav.header{
     align-items: flex-end;
     padding: 0px 10px;
     gap: 12px;
+    cursor: pointer;
 }
 .header-action .currency-change span{
     width: 12px;

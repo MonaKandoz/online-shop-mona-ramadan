@@ -2,6 +2,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .cart-icon .item-count{
@@ -48,6 +49,7 @@
 
     padding: 32px 16px;
     background: #FFFFFF;
+    cursor: default !important;
 }
 .cart-dropdown-container .cart-header{
     font-weight: 500;

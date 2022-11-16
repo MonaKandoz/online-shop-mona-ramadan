@@ -14,7 +14,6 @@ export default class Header extends React.Component {
     static contextType = CurrencyContext;
     render(){
         const { currency ,currencyList } = this.context;
-        console.log(currencyList)
         var symbol = currencyList.length? currencyList[currency].symbol:'$';
         return(
             <React.Fragment>

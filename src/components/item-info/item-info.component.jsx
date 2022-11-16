@@ -13,7 +13,6 @@ class ItemInfo extends React.Component{
     }
     handleChange= (item, attributeId, selectedValue)=>{
         const {setItemToAdd} = this.context;
-        console.log(item);
         var selectedAttr = '';
         const newAttributes = item.attributes.map((attribute, index) =>{
             if(attribute.id === attributeId){
@@ -24,8 +23,7 @@ class ItemInfo extends React.Component{
                     }
                     return  {...item, selected:false}
                 });
-                console.log( attribute);
-                console.log( newItem);
+                
                 return {...attribute, items: newItem}
             }else{
                 attribute.items.map((item) =>{
@@ -39,7 +37,7 @@ class ItemInfo extends React.Component{
         });
         
         this.setState({item: {...item, attributes:newAttributes,selectedAttr:selectedAttr}},
-            ()=>{setItemToAdd(this.state.item); console.log(this.state)}
+            ()=>setItemToAdd(this.state.item)
             );
     }
 
@@ -54,8 +52,8 @@ class ItemInfo extends React.Component{
                 });
                 return {...attribute, items: newItem}
             });
-            console.log(newAttributes)
-            this.setState({item:{...item, attributes:newAttributes}}, console.log(this.state))
+            
+            this.setState({item:{...item, attributes:newAttributes}})
         }
     }
     render(){

@@ -1,0 +1,68 @@
+.item-info{
+    display:flex;
+    flex-direction: column;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    margin-left: 2px;
+}
+.item-info .item-brand, .item-info .item-name, .item-info .item-price{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 160%;
+}
+
+.item-info .item-price{
+    font-weight: 700;
+}
+
+.item-info .attribute-inputs{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    row-gap: 8px;
+    margin: 8px 0;
+}
+.item-info .attribute-inputs div{
+    display: contents;
+}
+.item-info .attribute-inputs input[type="radio"]{
+    -webkit-appearance: none;
+    appearance: none;
+}
+.item-info .attribute-inputs input[type="radio"]~label{
+    cursor: pointer;
+}
+.item-info .attribute-inputs input[type="radio"]:disabled~label{
+    cursor: default;
+}
+.item-info .attr-val-text{
+    display: block;
+    min-width: 24px;
+    min-height: 24px;
+    font-family: 'Source Sans Pro', sans-serif;;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 160%;
+    border: 1px solid var(--c-black);
+    padding: 0 5px;
+    margin-right: 8px;
+}
+.item-info .attribute-inputs input[type="radio"]:checked~.attr-val-text{
+    background-color:  var(--c-black);
+    color: #FFFFFF;
+}
+
+.item-info .attr-val-swatch{
+    display: block;
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 8px;
+}
+.item-info .attribute-inputs input[type="radio"]:checked~.attr-val-swatch{
+    outline: 1px solid #5ECE7B;
+    outline-offset: 2px;
+}
+.item-info .swatch .attribute-inputs{
+    margin-left: 3px;
+}

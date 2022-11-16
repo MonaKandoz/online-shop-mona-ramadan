@@ -1,7 +1,7 @@
 import React from "react";
 
 import { CurrencyContext } from "../../context/currency.context";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import './currency-drop-down.style.css'
 
 class CurrencyDropDown extends React.Component{
@@ -38,10 +38,12 @@ class CurrencyDropDown extends React.Component{
     }
     render(){
         const { isCurrencyOpen, currency, currencyList} = this.context;
+        
         return(
             <>
                 <div className="currency-change">
-                    <span>$</span><IoIosArrowDown />
+                    <span>{currencyList.length? currencyList[currency].symbol: '$'}</span>
+                    {isCurrencyOpen?<IoIosArrowUp />:<IoIosArrowDown />}
                 </div>
                 {
                     isCurrencyOpen &&

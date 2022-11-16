@@ -15,12 +15,12 @@ export const addProductResolver= async(productID) =>{
     return product;
 }
 
-export const addCategoryResolver= async(categoryTitle) =>{
+export const addCategoryResolver= async(categoryTitle,offset,limit) =>{
     const data= await apolloClient.query({
         query: GET_CATEGORY,
         variables: {title:{title: categoryTitle}}
         }).then((res)=>{return res})
         
-    const products = data.data.category.products;
+    const products = data.data.category.products.slice(offset, limit + offset);
     return products;
 }

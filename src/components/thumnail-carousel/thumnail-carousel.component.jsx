@@ -10,6 +10,9 @@ class ThumnailCarousel extends React.Component{
             imgUrlIdx: 0
         }
     }
+    changePreviewImg= (idx)=>{
+        this.setState({imgUrlIdx:idx})
+    }
 
     render(){
         const {galleryImg, inStock} = this.props;
@@ -18,7 +21,7 @@ class ThumnailCarousel extends React.Component{
             <div className="thumnail-carousel">
                 <div className="Img-thumnail">
                     {galleryImg.map((imgUrl,idx)=>(
-                        <div key={`thumnail_${idx}`} className="thumnail" style={{backgroundImage:`url(${imgUrl})`}} onClick={()=>this.setState({imgUrlIdx:idx})}></div>
+                        <div key={`thumnail_${idx}`} className="thumnail" style={{backgroundImage:`url(${imgUrl})`}} onClick={()=>this.changePreviewImg(idx)}></div>
                     ))}
                 </div>
                 <div className="preview-side">

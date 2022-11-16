@@ -61,3 +61,7 @@ span.outStock{
 .product:hover .add-to-chart{
     display: flex;
 }
+
+.product a{
+    width: 100%;
+}

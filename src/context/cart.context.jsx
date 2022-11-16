@@ -6,7 +6,6 @@ const addCartItem = (cartItems, productToAdd)=>{
     if(productToAdd.selectedAttr === undefined){
         var selectedAttr = '';
         const newAttributes = productToAdd.attributes.map((attribute, index) =>{
-            console.log(attribute);
             const newItem = attribute.items.map((item, index) =>{
                 if(index === 0) {
                     selectedAttr+= item.value;
@@ -16,7 +15,7 @@ const addCartItem = (cartItems, productToAdd)=>{
             });
             return {...attribute, items: newItem}
         });
-        console.log(cartItems)
+        
         // return new array with modified cartItems/ new cart item
         productToAdd=  {...productToAdd,  attributes:newAttributes, selectedAttr:selectedAttr};
     }
@@ -24,7 +23,7 @@ const addCartItem = (cartItems, productToAdd)=>{
     const existingCartItem = cartItems.find(
         (cartItem) => cartItem.id === productToAdd.id &&  cartItem.selectedAttr === productToAdd.selectedAttr 
         );
-        console.log(existingCartItem);
+        
     // if found, increment quantity
     if(existingCartItem){
         return cartItems.map((cartItem)=>
@@ -55,6 +54,10 @@ const removeCartItem = (cartItems, cartItemToRemove) => {
         : cartItem
     );
   };
+  function getInitialState() {
+    const cartItems = localStorage.getItem('cartItems')
+    return cartItems ? JSON.parse(cartItems) : []
+  }
 
 export const CartContext = createContext({
     isCartOpen: false,
@@ -71,7 +74,7 @@ export const CartContext = createContext({
 
 export const CartProvidor = ({children})=>{
     const [isCartOpen, setIsCartOpen] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
+    const [cartItems, setCartItems] = useState(getInitialState);
     const [cartCount, setCartCount ] = useState(0);
     const [cartTotal, setCartTotal] = useState(0);
     const [currencySelected, setCurrencySelected] = useState(0);
@@ -84,22 +87,17 @@ export const CartProvidor = ({children})=>{
     }, [cartItems]);
 
     useEffect(() => {
-        console.log(cartItems);
-        console.log(currencySelected);
         var newCartTotal = cartItems.reduce(
           (total, cartItem) => total + cartItem.quantity * cartItem.prices[currencySelected].amount,
           0
         );
-        console.log(newCartTotal);
+        
         setCartTotal(newCartTotal.toFixed(2));
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
       }, [cartItems, currencySelected]);
+      
 
-
-      useEffect(()=>{
-console.log('itemto add',itemToAdd)
-      },[itemToAdd])
     const addItemToCart = (productToAdd)=>{
-        console.log(productToAdd)
         setCartItems(addCartItem(cartItems,productToAdd));
         return;
     }

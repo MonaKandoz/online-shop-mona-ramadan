@@ -15,10 +15,10 @@ const CATEGORIES = gql`
     }
 `;
 export const ProductsProvider = ({children})=>{
-    const {loading, data} = useQuery(CATEGORIES);
+    const {loading, error, data} = useQuery(CATEGORIES);
     const [categories, setCategories] = useState([]);
     const [productsList, setProductsList] = useState([]);
-    const [currencySelected, setCurrencySelected] = useState(0)
+    const [currencySelected, setCurrencySelected] = useState(0);
 
 
     useEffect(()=>{
@@ -34,7 +34,7 @@ export const ProductsProvider = ({children})=>{
         }
     },[data]);
     
-    const value = {setProductsList, productsList, categories, loading, currencySelected, setCurrencySelected};
+    const value = {setProductsList, productsList, categories, loading, currencySelected, setCurrencySelected, error};
     
     return(
         <ProductsContext.Provider value={value}>{children}</ProductsContext.Provider>

@@ -9,7 +9,10 @@ const CURRENCIES = gql`
         }
     }
 `;
-
+function getInitialState() {
+    const currency = localStorage.getItem('currency')
+    return currency ? JSON.parse(currency) : []
+  }
 export const CurrencyContext = createContext({
     isCurrencyOpen: false,
     setIsCurrencyOpen: ()=>{},
@@ -21,7 +24,7 @@ export const CurrencyProvidor = ({children})=>{
     const {data} = useQuery(CURRENCIES);
     const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
     const [currencyList, setCurrencyList] = useState([]);
-    const [currency, setCurrency] = useState(0);
+    const [currency, setCurrency] = useState(getInitialState);
 
     useEffect(()=>{
         if(data){
@@ -30,8 +33,8 @@ export const CurrencyProvidor = ({children})=>{
     },[data]);
 
     useEffect(()=>{
-console.log(currency);
-    },[currency]);
+        localStorage.setItem('currency', JSON.stringify(currency));
+    },[currency])
 
     const value = {
         isCurrencyOpen, 

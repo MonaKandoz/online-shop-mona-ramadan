@@ -11,7 +11,6 @@ export default class Category extends React.Component {
         const {setCurrencySelected}= this.context;
         const currencyIndx =this.props.currencyIndx;
         setCurrencySelected(currencyIndx);
-        console.log('update');
     }
 
     render(){

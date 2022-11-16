@@ -22,10 +22,11 @@
     scrollbar-width: none;  /* Firefox */
 }
 
-.thumnail{
+.thumnail, .img-preview{
     width:80px;
     height:80px;
     background-size: cover;
+    background-position: center;
 }
 
 .preview-side{
@@ -37,6 +38,4 @@
 .img-preview{
     width: 100%;
     height: 100%;
-    
-    background-size: cover;
 }
