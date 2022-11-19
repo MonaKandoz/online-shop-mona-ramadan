@@ -7,6 +7,7 @@ query ($title: CategoryInput){
     products{
         id
         name
+        brand
         inStock
         gallery
         prices{

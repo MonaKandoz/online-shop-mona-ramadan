@@ -11,7 +11,7 @@ class ProductCard extends React.Component{
     render(){
         const {currencySelected} = this.context;
         let {product} = this.props;
-        let {id ,gallery ,inStock , name, prices} = product;
+        let {id ,gallery ,inStock , name, brand, prices} = product;
 
         return(
             
@@ -22,7 +22,7 @@ class ProductCard extends React.Component{
                     </div>
                     <Link to={id}>
                         <div className="content">
-                            <div className="product-name">{name}</div>
+                            <div className="product-name">{brand} {name}</div>
                             <span className="product-price">{prices[currencySelected].currency.symbol}{prices[currencySelected].amount}</span>
                         </div>
                     </Link>

@@ -29,6 +29,9 @@
     background-position: center;
 }
 
+.thumnail{
+    cursor: pointer;
+}
 .preview-side{
     position: relative;
     width:610px;

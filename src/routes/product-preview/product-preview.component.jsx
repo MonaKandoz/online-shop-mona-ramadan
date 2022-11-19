@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
 import { addProductResolver } from "../../apollo/resolvers/resolvers"; 
+import { Interweave } from "interweave";
 
 import ItemInfo from "../../components/item-info/item-info.component";
 import Spinner from "../../components/spinner/spinner.component";
@@ -68,8 +69,7 @@ class ProductPreview extends React.Component{
                     <div className="left-side">
                         <ItemInfo item={product} preview />
                         <Button buttonType="checkOut" onClick={()=>this.addProductToCart()}>Add to cart</Button>
-                        <div className="prodct-description" dangerouslySetInnerHTML={{__html: product.description}}>
-                        </div>
+                        <Interweave className="prodct-description" content={product.description} />
                     </div>
                 </div>
                 :
