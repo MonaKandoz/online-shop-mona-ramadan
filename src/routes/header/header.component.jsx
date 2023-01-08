@@ -21,7 +21,7 @@ export default class Header extends React.Component {
                     {/*navigation */}
                     <Category currencyIndx={currency} />
                     
-                    {/*log*/}
+                    {/*logo*/}
                     <Link to="/" className="a-logo"><ReactLogo /></Link>
 
                     {/*actions*/}

@@ -70,7 +70,7 @@ class CartDropdown extends React.Component{
                     isCartOpen &&
                     <div className="page-overlay">
                         <div ref={this.wrapperRef} className="cart-dropdown-container" >
-                            <div className="cart-header"><span>My Bag,</span> {cartCount} items</div>
+                            <div className="cart-header"><span>My Bag,</span> {cartCount} {cartCount===1? 'item' : 'items'}</div>
                             <div className="cart-item">
                                 {cartItems.map((item)=>(
                                     <CartItem key={item.id} cartItem={item} isDropdown isCart />

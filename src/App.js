@@ -7,23 +7,31 @@ import Header from "./routes/header/header.component";
 import CategoryContent from "./routes/categoryContent/categoryContent.component";
 import CartPage from "./routes/cart-page/cart-page.component";
 import ProductPreview from "./routes/product-preview/product-preview.component";
+import Spinner from "./components/spinner/spinner.component";
 
 function App() {
-  const {categories} = useContext(ProductsContext)
-
+  const {loading, error,categories} = useContext(ProductsContext);
+  
   return (
-    <Routes>
-      <Route path="/" element={<Header />}>
-      <Route index element={<Navigate to={`/${categories[0]}`} />} />
-            {categories.map((category)=>(
-                <Route path={category} >
-                    <Route index element={<CategoryContent category={category} />} />
-                    <Route path=":productId" element={<ProductPreview />}/>
-                </Route>
-            ))}
-        <Route path="cart" element={<CartPage />} />
-      </Route>
-    </Routes>
+    <>
+    {!loading && categories[0] !== undefined?
+      <Routes>
+        <Route path="/" element={<Header />}>
+        <Route index element={<Navigate to={`/${categories[0]}`} />} />
+              {categories.map((category)=>(
+                  <Route path={category} >
+                      <Route index element={<CategoryContent category={category} />} />
+                      <Route path=":productId" element={<ProductPreview />}/>
+                  </Route>
+              ))}
+          <Route path="cart" element={<CartPage />} />
+        </Route>
+      </Routes>
+      :
+      <Spinner />
+    }
+    {error && <h1> Error loading the page! 🤕❌</h1>}
+    </>
   );
 }
 
