@@ -73,7 +73,7 @@ class CartDropdown extends React.Component{
                             <div className="cart-header"><span>My Bag,</span> {cartCount} {cartCount===1? 'item' : 'items'}</div>
                             <div className="cart-item">
                                 {cartItems.map((item)=>(
-                                    <CartItem key={item.id} cartItem={item} isDropdown isCart />
+                                    <CartItem key={`${item.id}_${item.selectedAttr}`} cartItem={item} isDropdown isCart />
                                 ))}
                             </div>
                             <div className="total-price">

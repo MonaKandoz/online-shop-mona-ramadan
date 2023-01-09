@@ -13,13 +13,13 @@ class CartItem extends React.Component{
     render(){
         const cartItem = this.props.cartItem;
         const { isDropdown } = this.props
-        const {id, name, quantity, gallery} = cartItem;
+        const {id, name, quantity, gallery, selectedAttr} = cartItem;
         const {addItemToCart, removeItemFromCart} = this.context;
         
         return(
             <div className="cart-product">
                 <div className="cart-right">
-                    <ItemInfo key={id} item={cartItem} isDropdown={isDropdown} isCart/>
+                    <ItemInfo key={`${id}_${selectedAttr}_info`} item={cartItem} isDropdown={isDropdown} isCart/>
                 </div>
                 <div className="cart-left">
                     <div className="item-increase-decrease">
