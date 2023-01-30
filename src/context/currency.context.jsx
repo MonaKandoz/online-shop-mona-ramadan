@@ -10,8 +10,11 @@ const CURRENCIES = gql`
     }
 `;
 function getInitialState() {
-    const currency = localStorage.getItem('currency')
-    return currency ? JSON.parse(currency) : []
+    const currency = localStorage.getItem('currency');
+    if(currency === null){
+        return 0
+    }
+    return JSON.parse(currency) 
   }
 export const CurrencyContext = createContext({
     isCurrencyOpen: false,
@@ -34,6 +37,7 @@ export const CurrencyProvidor = ({children})=>{
 
     useEffect(()=>{
         localStorage.setItem('currency', JSON.stringify(currency));
+        console.log(currency)
     },[currency])
 
     const value = {

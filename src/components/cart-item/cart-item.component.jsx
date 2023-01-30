@@ -19,7 +19,7 @@ class CartItem extends React.Component{
         return(
             <div className="cart-product">
                 <div className="cart-right">
-                    <ItemInfo key={`${id}_${selectedAttr}_info`} item={cartItem} isDropdown={isDropdown} isCart/>
+                    <ItemInfo key={isDropdown?`${id}_${selectedAttr}_info_dropdown`:`${id}_${selectedAttr}_info`} item={cartItem} isDropdown={isDropdown} isCart/>
                 </div>
                 <div className="cart-left">
                     <div className="item-increase-decrease">

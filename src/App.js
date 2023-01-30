@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<Header />}>
         <Route index element={<Navigate to={`/${categories[0]}`} />} />
               {categories.map((category)=>(
-                  <Route path={category} >
+                  <Route key={`Route_${category}`} path={category} >
                       <Route index element={<CategoryContent category={category} />} />
                       <Route path=":productId" element={<ProductPreview />}/>
                   </Route>
