@@ -28,9 +28,8 @@ function App() {
         </Route>
       </Routes>
       :
-      <Spinner />
+      error? <h1> Error loading the page! 🤕❌</h1>:<Spinner />
     }
-    {error && <h1> Error loading the page! 🤕❌</h1>}
     </>
   );
 }
